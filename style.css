@@ -19,7 +19,6 @@
 	--ttt-cor: #b2b2b2;
 	--intro-btn-first-col:#fc6f5c;
 
-
 	/*White*/
 	--white-cor: #ffffff;
 	--new: 	#FFFFFF8A;
@@ -51,15 +50,13 @@
 	margin: 0;
 	padding: 0;
 	text-decoration: none;
-/*	list-style: none;*/
 }
-
 
 .container{
 	display: flex;
+	flex-direction: column;
 	align-items: center;
 	justify-content: space-around;
-	flex-direction: column;
 	align-items: start;
 	background-color:var(--nav-nwtcor);
 	padding: 0 12.5%;
@@ -68,10 +65,9 @@
 	z-index: 9999
 }
 
-
 .menu {
 	position: absolute;
-	top: 1.2rem;
+	top: 1.1rem;
 	right: 12.5%;
 	display: flex;
 	flex-direction: column;
@@ -96,11 +92,14 @@
 .brand-name {
 	padding: 1rem 0;
 	font-size: 2.5rem;
+	width: 	100%;
 }
 
-/*.navbar	 {
+.navbar	 {
 	width: 100%;
-}*/
+	display: none;
+	flex-direction: column;
+}
 
 .brand-link, .links {
 	text-decoration: none;
@@ -109,41 +108,52 @@
 
 .ulist {
 	list-style: none;
-	display: none;
+	display: flex;
 	flex-direction: column;
-/*	width: 	100%;*/
+	width: 100%;
+	justify-content: end;
+}
+
+#theme {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+	padding: .5rem 0;
+}
+
+#theme:hover {
+	background-color: var(--bg-dark);
+	cursor: pointer;
+}
+
+#theme > ion-icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: 	var(--white-cor);
 }
 
 .ulist:hover {
 	cursor: pointer;
 }
 
-.list-item {
+.list-item, #theme > ion-icon {
 	font-size: 1.6rem;
 	font-weight: 500;
 	padding: .5rem 1rem;
-/*	width: 	100%;*/
 }
 
-.list-item:nth-child(6) {
-	color: var(--white-cor);
-	font-size: 2rem;
-}
-
-.list-item:hover {
+.list-item:hover, #theme > ion-icon:hover {
 	display: block;
-	background-color: #5e626f; /*Leave alone*/
+	background-color: var(--bg-dark);
 }
-
-
 
 .active {
 	display: flex;
 }
 
-
 /* Intoductory section */
-
 .intro {
 	background-color: var(--bg-light);
 	padding: 8rem 12.5% 6rem;
@@ -184,8 +194,6 @@
 	background-color: var(--orange-col);
 	color: var(--bg-light);
 	outline: 1px solid var(--orange-col);
-	/*margin-right: 2rem;
-	margin-bottom: 2rem;*/
 }
 
 .intro-btns > a:first-child:hover	{
@@ -221,20 +229,14 @@
 
 .display-img { 
 	width: 100%;
-/*	height: 50vh;*/
-/*	height: auto;*/
 	margin-bottom: 2rem;
-	/*max-height: 500px;
-	max-width: 400.05;*/
 }
 
 .network {
 	list-style: none;
 	display: grid;
 	grid-template-columns: 25% 25% 25% 25%;
-
 	justify-items: center;
-/*	max-width: 	49.7rem;*/
 	background-color: var(--nav-nwtcor);
 }
 
@@ -256,13 +258,7 @@
 	font-size: 	2rem;
 }
 
-
 	/* My skill sets */
-
-.section-container {
-/*	color: var(--text-cor);*/
-}
-
 .tech-stack {
 	margin-bottom: 2rem;
 }
@@ -275,9 +271,9 @@
 	padding: 0 0 1rem 0;
 	color: 	var(--white-cor);
 }
-/**/
+
 .skill {
-	color: var(--new); /*leave alone*/
+	color: var(--new);
 }
 
 .skill span a {
@@ -335,26 +331,24 @@
   padding: 0 0 2rem 3rem;
   font-size: 2rem;
   text-transform: uppercase;
-
 }
 
 .contents {
 	display: grid;
-/*	grid-template-columns: 1fr;*/
   padding: 0 3rem;
   border-left: 1px solid var(--orange-col);
 }
 
 .box {
-    position: relative;
-		display: grid;
-    padding: 2rem;
-    background-color: var(--bg-dark);
-    cursor: pointer;
-    transition: all 0.4;
-    margin-bottom: 2rem;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+	display: grid;
+  padding: 2rem;
+  background-color: var(--bg-dark);
+  cursor: pointer;
+  transition: all 0.4;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .box:hover {
@@ -427,7 +421,6 @@
 
 .stack {
 	display: grid;
-/*35ch wasn't here before so i can remove it anytime*/
 	grid-template-columns: repeat(auto-fit, minmax(25ch, 30rem));
 	justify-items: center;
 	align-content: center;
@@ -436,7 +429,6 @@
 }
 
 .stack-item{
-/*	border: 2px solid green;*/
 width: 100%;
 text-align: center;
 background-color: 	var(--bg-light);
@@ -485,7 +477,6 @@ padding: 2rem 2rem;
 .details-container {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(35ch, 30rem));
-/*	grid-template-rows: 1fr 1fr 1fr;*/
 	justify-content: center;
 	gap: 0 2rem;
 
@@ -697,11 +688,6 @@ form {
 	color: var(--white-cor);
 }
 
-/*input, textarea  {
-	width: 100%;
-	margin: 0 auto;
-}*/
-
 /*Contact Icons*/
 
 .contact_icons p {
@@ -859,7 +845,6 @@ footer span {
 	.flex_background {
 		display: grid;
 		grid-template-columns: minmax(320px, 450px) minmax(300px, 1fr);
-/*		grid-template-columns: repeat(auto-fit, 40rem) ;*/
 		gap: 3rem;
 	}
 
@@ -870,6 +855,11 @@ footer span {
 
 @media (min-width: 991px){
 
+	.navbar {
+		display: 	grid;
+		grid-template-columns: 1fr min-content;
+	}
+
 	.menu {
 		display: none;
 	}
@@ -877,8 +867,7 @@ footer span {
 	.container{
 	flex-direction: row;
 	justify-content: space-between;
-	align-items: center;+
-
+	align-items: center;
 	}
 
 	.ulist {
@@ -886,24 +875,13 @@ footer span {
 	display: flex;
 	}
 
-	.list-item:nth-child(6) {
+	#theme {
 	display: flex;
 	align-items: center;
 	justify-content:center;
 	}
 }
 
-/*@media (min-width: 1000px) {
-
-	.profile {
-		height: 	600px;
-	}
-	.display-img {
-		height: 100%;
-		width: 	auto;
-	}
-}
-*/
 
 @media (min-width: 1000px) {
 	.display-img { 

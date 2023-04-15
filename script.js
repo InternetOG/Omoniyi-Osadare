@@ -4,16 +4,29 @@ const next = document.querySelector(".next");
 const prev = document.querySelector(".prev");
 const menu = document.getElementsByClassName("menu")[0];
 const ulist = document.getElementsByClassName("ulist")[0];
-const lightTheme = document.getElementById("theme");
-
+const navbar = document.getElementsByClassName("navbar")[0];
+const body = document.querySelector("body");
+let theme = document.getElementById("theme");
+let ionIcon = document.querySelector("ion-icon")
 let form = document.getElementsByTagName("form")[0];
-form.addEventListener("click", (e) =>{
-  e.preventDefault();
-})
 
-function toggleMenuAfterClick() {
+function toggleMenuAfterClick(e) {
   if (window.innerWidth < 991){
-    ulist.classList.toggle("active");
+    navbar.classList.toggle("active");
+  }
+}
+
+function exitToggleAfterListClick(e) {
+  if(e.target.tagName === "A"){
+    toggleMenuAfterClick();
+  }
+}
+
+function exitToggleWhenClickonOtherElement(e) {
+  if (e.target.className === "menu" || e.target.className === "bar"){
+    return;
+  } else {
+    navbar.classList.remove("active");
   }
 }
 
@@ -22,14 +35,20 @@ function changeThemeAfterClick() {
   toggleMenuAfterClick();
 }
 
-function exitToggleAfterLiClick(e) {
-  if(e.target.tagName === "A"){
-    toggleMenuAfterClick();
-  } else if (e.target.tagName ==="ION-ICON"){
-      changeThemeAfterClick();
-      console.log(e.target)
+function changeIconAfterClick(e) {
+  if (document.body.classList == "light-theme"){
+    theme.innerHTML = `<ion-icon name="sunny-outline"></ion-icon>`;
+  } else {
+    theme.innerHTML = `<ion-icon name="moon-outline"></ion-icon>`;
   }
+  changeThemeAfterClick();
 }
+
+function preventFormDefaultBehaviour(e) {
+  e.preventDefault();
+}
+
+
 
 let slideIndex = 0;
 let slidesLength = slides.length;
@@ -37,10 +56,10 @@ let slidesLength = slides.length;
 function showSlide() {
   for(let i = 0; i < slidesLength; i++){
     slides[i].style.display = "none";
-    dots[i].classList.remove("bcolor")
+    dots[i].classList.remove("bcolor");
   }
   slides[slideIndex].style.display = "block";
-  dots[slideIndex].classList.add("bcolor")
+  dots[slideIndex].classList.add("bcolor");
 }
 
 function goToNextSlideAfterClick() {
@@ -61,8 +80,6 @@ function goToPrevSlideAfterClick() {
   }
   showSlide();
 }
-
-
 
 function sendEmail() {
   let name = document.getElementById("name").value;
@@ -93,8 +110,11 @@ function sendEmail() {
   }
 }
 
-ulist.addEventListener("click", exitToggleAfterLiClick);
+ulist.addEventListener("click", exitToggleAfterListClick);
 menu.addEventListener("click", toggleMenuAfterClick);
 next.addEventListener("click", goToNextSlideAfterClick);
 prev.addEventListener("click", goToPrevSlideAfterClick);
+theme.addEventListener("click", changeIconAfterClick);
+body.addEventListener("click", exitToggleWhenClickonOtherElement);
+form.addEventListener("click", preventFormDefaultBehaviour);
 showSlide();
